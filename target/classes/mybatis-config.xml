@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<!-- 所有映射器中配置的缓存的全局开关 -->
+		<setting name="cacheEnabled" value="true" />
+		<!-- 延迟加载的全局开关 -->
+		<setting name="lazyLoadingEnabled" value="true" />
+		<!-- 单一语句返回多结果集开关 -->
+		<setting name="multipleResultSetsEnabled" value="true" />
+		<!-- 使用列标签代替列名开关 -->
+		<setting name="useColumnLabel" value="true" />
+		<!-- 允许 JDBC 支持自动生成主键开关 -->
+		<setting name="useGeneratedKeys" value="false" />
+		<!-- 指定 MyBatis 应如何自动映射列到字段或属性 -->
+		<setting name="autoMappingBehavior" value="PARTIAL" />
+		<!-- 指定发现自动映射目标未知列（或者未知属性类型）的行为 -->
+		<setting name="autoMappingUnknownColumnBehavior" value="WARNING" />
+		<!-- 配置默认的执行器 -->
+		<setting name="defaultExecutorType" value="SIMPLE" />
+		<!-- 设置超时时间 -->
+		<setting name="defaultStatementTimeout" value="3000" />
+		<!-- 为驱动的结果集获取数量（fetchSize）设置一个提示值 -->
+		<setting name="defaultFetchSize" value="100" />
+		<!-- 允许在嵌套语句中使用分页（RowBounds） -->
+		<setting name="safeRowBoundsEnabled" value="false" />
+		<!-- 自动驼峰命名规则（camel case）映射开关 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<!-- 利用本地缓存机制（Local Cache）防止循环引用（circular references）和加速重复嵌套查询 -->
+		<setting name="localCacheScope" value="SESSION" />
+		<!-- 当没有为参数提供特定的 JDBC 类型时，为空值指定 JDBC 类型 -->
+		<setting name="jdbcTypeForNull" value="OTHER" />
+		<!-- 指定哪个对象的方法触发一次延迟加载 -->
+		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
+		<!-- 指定 Mybatis 创建具有延迟加载能力的对象所用到的代理工具 -->
+		<setting name="proxyFactory" value="CGLIB" />
+		<!-- 指定日志框架为LOG4J2 -->
+		<setting name="logImpl" value="LOG4J2" />  
+	</settings>
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageHelper">
+			<property name="dialect" value="mysql" />
+			<property name="offsetAsPageNum" value="true" />
+			<property name="rowBoundsWithCount" value="true" />
+			<property name="pageSizeZero" value="true" />
+		</plugin>
+	</plugins>
+</configuration>
