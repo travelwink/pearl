@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pearl.finance.common.BaseController;
-import com.pearl.finance.common.Contants;
+import com.pearl.finance.common.Constants;
 import com.pearl.finance.user.entity.UserEntity;
 import com.pearl.finance.user.service.UserService;
 
@@ -24,10 +24,10 @@ public class LoginController extends BaseController {
 		System.out.println(mobile + ", " + password);
 		try {
 			UserEntity user = userService.login(mobile, password);
-			super.getRequest().getSession().setAttribute(Contants.CURRENT_USER, user);
+			this.request.getSession().setAttribute(Constants.CURRENT_USER, user);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "/login";
+			return "redirect:http://localhost:8080/finance/";
 		}
 		return "/index";
 	}
@@ -40,7 +40,7 @@ public class LoginController extends BaseController {
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		session.setAttribute(Contants.CURRENT_USER, null);
+		session.setAttribute(Constants.CURRENT_USER, null);
 		return "/index";
 	}
 

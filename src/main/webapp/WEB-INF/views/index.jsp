@@ -26,6 +26,30 @@ pageEncoding="UTF-8"%>
 		function login() {
 			window.location="<%=request.getContextPath()%>/login.jsp";
 		}
+		
+		$(document).ready(function() {
+			$("#selectExpenseClass").focus(function() {
+				$.ajax({
+					type : "POST",
+					url : "../expense/queryUserExpenseClass.do",
+					async : true,
+					dataType:"json",
+					success: function(results) {
+						var options = "";
+						for (var i =0; i<results.length; i++) {
+							options += "<option value='" + results[i].id + "'>" + results[i].expenseClassName + "</option>"
+						}
+						$("#selectExpenseClass").html(options);
+/* 						alert(results[0].expenseClassName); */
+					},
+					error: function() {
+						alert("error");
+					}
+				});
+			});
+		});
+		
+		
 	</script>
 	<title>Insert title here</title>
 </head>

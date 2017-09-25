@@ -28,12 +28,7 @@ $(document).ready(function() {
 		}
 	}
 
-	$("#selectExpenseClass").click(function() {
-		$.ajax({
-			type : "POST",
-			url : "../expense/queryUserExpenseClass.do",
-			async : false,
-			dataType : "json"
-		});
-	});
+	
+
+	
 });

@@ -16,6 +16,9 @@
 		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
 	<context:annotation-config />
+	<mvc:annotation-driven />
+	
+	<mvc:default-servlet-handler/>
 
 	<mvc:interceptors>
 		<mvc:interceptor>
@@ -24,8 +27,6 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 
-	<mvc:annotation-driven />
-	
 	<context:component-scan base-package="com.pearl.finance.*.controller">
 	</context:component-scan>
 	

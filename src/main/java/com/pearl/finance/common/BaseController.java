@@ -19,7 +19,7 @@ public class BaseController {
 	 */
 	public UserEntity getUserBySession() {
 		HttpSession session = this.getRequest().getSession();
-		Object obj = session.getAttribute(Contants.CURRENT_USER);
+		Object obj = session.getAttribute(Constants.CURRENT_USER);
 		if (obj instanceof UserEntity) {
 			return (UserEntity) obj;
 		} else {

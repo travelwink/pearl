@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/bootstrap/css/bootstrap.min.css">
 
 <title>Document</title>
 </head>
@@ -24,7 +24,8 @@
 		</div>
 	</form>
 	<footer class="footer">@pearl finance</footer>
-	<script src="assets/bootstrap/bootstrap.min.js"></script>
-	<script src="assets/jquery/jquery-3.2.1.min.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/jquery/jquery-3.2.1.min.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/popper/popper.min.js"></script>
+	<script src="<%=request.getContextPath()%>/assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
