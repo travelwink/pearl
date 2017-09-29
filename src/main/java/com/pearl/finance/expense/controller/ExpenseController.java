@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pearl.finance.common.BaseController;
 import com.pearl.finance.common.Constants;
-import com.pearl.finance.expense.entity.ExpenseClassEntity;
+import com.pearl.finance.expense.entity.ExpenseClass;
 import com.pearl.finance.expense.service.ExpenseClassService;
-import com.pearl.finance.user.entity.UserEntity;
+import com.pearl.finance.user.entity.User;
 
 @Controller
 @RequestMapping("/expense")
@@ -22,14 +22,14 @@ public class ExpenseController extends BaseController {
 	@Autowired
 	ExpenseClassService expenseClassService;
 
-	@RequestMapping("/queryUserExpenseClass.do")
+	@RequestMapping("/queryUserExpenseClass")
 	@ResponseBody
-	public List<ExpenseClassEntity> queryUserExpenseClass() {
-		UserEntity user = this.getUserBySession();
+	public List<ExpenseClass> queryUserExpenseClass() {
+		User user = this.getUserBySession();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap.put(Constants.JSON_SUCCESS, true);
 		if (user != null) {
-			List<ExpenseClassEntity> expenseClassList = expenseClassService.queryExpenseClassListByUser(user);
+			List<ExpenseClass> expenseClassList = expenseClassService.queryExpenseClassListByUser(user);
 			resultMap.put(Constants.JSON_RESULTS, expenseClassList);
 			return expenseClassList;
 		} else {

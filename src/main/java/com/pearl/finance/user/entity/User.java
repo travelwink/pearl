@@ -2,7 +2,7 @@ package com.pearl.finance.user.entity;
 
 import java.util.Date;
 
-public class UserEntity {
+public class User {
 	private String id;
 	private String email;
 	private String password;

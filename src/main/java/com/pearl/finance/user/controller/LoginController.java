@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pearl.finance.common.BaseController;
 import com.pearl.finance.common.Constants;
-import com.pearl.finance.user.entity.UserEntity;
+import com.pearl.finance.user.entity.User;
 import com.pearl.finance.user.service.UserService;
 
 @Controller
@@ -23,7 +23,7 @@ public class LoginController extends BaseController {
 	public String login(String mobile, String password) {
 		System.out.println(mobile + ", " + password);
 		try {
-			UserEntity user = userService.login(mobile, password);
+			User user = userService.login(mobile, password);
 			this.request.getSession().setAttribute(Constants.CURRENT_USER, user);
 		} catch (Exception e) {
 			e.printStackTrace();

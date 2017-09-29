@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.pearl.finance.user.entity.UserEntity;
+import com.pearl.finance.user.entity.User;
 
 public class BaseController {
 
@@ -17,11 +17,11 @@ public class BaseController {
 	 * 
 	 * @return 用户实体类
 	 */
-	public UserEntity getUserBySession() {
+	public User getUserBySession() {
 		HttpSession session = this.getRequest().getSession();
 		Object obj = session.getAttribute(Constants.CURRENT_USER);
-		if (obj instanceof UserEntity) {
-			return (UserEntity) obj;
+		if (obj instanceof User) {
+			return (User) obj;
 		} else {
 			return null;
 		}

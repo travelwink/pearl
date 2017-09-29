@@ -28,7 +28,8 @@ pageEncoding="UTF-8"%>
 		}
 		
 		$(document).ready(function() {
-			$("#selectExpenseClass").focus(function() {
+			// 查询支出类型
+			$("#expenseClass").focus(function() {
 				$.ajax({
 					type : "POST",
 					url : "../expense/queryUserExpenseClass.do",
@@ -37,16 +38,33 @@ pageEncoding="UTF-8"%>
 					success: function(results) {
 						var options = "";
 						for (var i =0; i<results.length; i++) {
-							options += "<option value='" + results[i].id + "'>" + results[i].expenseClassName + "</option>"
+							options += "<option value='" + results[i].id + "'>" + results[i].name + "</option>"
 						}
-						$("#selectExpenseClass").html(options);
-/* 						alert(results[0].expenseClassName); */
+						$("#expenseClass").html(options);
 					},
 					error: function() {
-						alert("error");
 					}
 				});
 			});
+			// 查询账户
+			$("#account").focus(function() {
+				$.ajax({
+					type : "POST",
+					url : "../account/queryUserAccount.do",
+					async : true,
+					dataType:"json",
+					success: function(results) {
+						var options = "";
+						for (var i =0; i<results.length; i++) {
+							options += "<option value='" + results[i].id + "'>" + results[i].name + "</option>"
+						}
+						$("#account").html(options);
+					},
+					error: function() {
+					}
+				});
+			});
+			
 		});
 		
 		
@@ -81,8 +99,8 @@ pageEncoding="UTF-8"%>
 								<input type="text" placeholder="输入支出内容" class="form-control">
 							</div>
 							<div class="form-group">
-								<label for="selectExpenseClass">支出类型</label><button type="button" class="btn btn-info btn-sm">编辑类型</button>
-								<select name="expenseClass" id="selectExpenseClass" class="form-control">
+								<label for="expenseClass">支出类型</label><button type="button" class="btn btn-info btn-sm">编辑类型</button>
+								<select name="expenseClass" id="expenseClass" class="form-control">
 									<option value="0"></option>
 									<option value=""></option>
 									<option value=""></option>

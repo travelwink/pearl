@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.pearl.finance.common.exceptions.BusinessException;
 import com.pearl.finance.user.dao.UserDao;
-import com.pearl.finance.user.entity.UserEntity;
+import com.pearl.finance.user.entity.User;
 import com.pearl.finance.user.service.UserService;
 import com.pearl.finance.utils.StringUtil;
 
@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 	String message;
 
 	@Override
-	public UserEntity login(String mobile, String password) throws Exception {
+	public User login(String mobile, String password) throws Exception {
 
 		if (StringUtil.isBlank(mobile)) {
 			message = "请填写手机号";
@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 		}
 
 		try {
-			UserEntity user = userDao.selectByMobile(mobile);
+			User user = userDao.selectByMobile(mobile);
 			if (user.getPassword().equals(password)) {
 				return user;
 			} else {

@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.pearl.finance.user.dao.UserDao">
-	<select id="select" resultType="com.pearl.finance.user.entity.UserEntity">
+	<select id="select" resultType="com.pearl.finance.user.entity.User">
 		select * from t_user where
 		${key}=#{value}
 	</select>

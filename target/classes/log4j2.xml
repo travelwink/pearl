@@ -9,6 +9,9 @@
 		<Logger name="com.pearl.finance.user.dao" level="debug" additivity="false">
 			<AppenderRef ref="Console" />
 		</Logger>
+		<Logger name="com.pearl.finance.expense.dao" level="debug" additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
 		<Root level="error">
 			<AppenderRef ref="Console" />
 		</Root>
