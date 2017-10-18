@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pearl.finance.common.BaseController;
 import com.pearl.finance.common.Constants;
+import com.pearl.finance.expense.entity.Expense;
 import com.pearl.finance.expense.entity.ExpenseClass;
 import com.pearl.finance.expense.service.ExpenseClassService;
 import com.pearl.finance.user.entity.User;
@@ -35,5 +36,9 @@ public class ExpenseController extends BaseController {
 		} else {
 			return null;
 		}
+	}
+	
+	public List<Expense> queryUserExpenseWeekly() {
+		return null;
 	}
 }

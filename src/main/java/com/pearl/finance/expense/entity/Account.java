@@ -9,7 +9,7 @@ public class Account {
 	private String intitalAmount;
 	private Date OpenDate;
 	private double balance;
-	private String currencyId;
+	private Currency currency;
 	private boolean deleteFlag;
 
 	public String getId() {
@@ -60,12 +60,12 @@ public class Account {
 		this.balance = balance;
 	}
 
-	public String getCurrencyId() {
-		return currencyId;
+	public Currency getCurrency() {
+		return currency;
 	}
 
-	public void setCurrencyId(String currencyId) {
-		this.currencyId = currencyId;
+	public void setCurrency(Currency currency) {
+		this.currency = currency;
 	}
 
 	public boolean isDeleteFlag() {

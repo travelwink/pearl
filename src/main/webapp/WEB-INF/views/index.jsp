@@ -12,7 +12,7 @@ pageEncoding="UTF-8"%>
 	<script src="../assets/jquery/jquery-3.2.1.min.js"></script>
 	<script src="../assets/popper/popper.min.js"></script>
 	
-	<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css">
 	<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../assets/js/calendar.js"></script>
 	<script>
@@ -28,41 +28,53 @@ pageEncoding="UTF-8"%>
 		}
 		
 		$(document).ready(function() {
-			// 查询支出类型
-			$("#expenseClass").focus(function() {
-				$.ajax({
-					type : "POST",
-					url : "../expense/queryUserExpenseClass.do",
-					async : true,
-					dataType:"json",
-					success: function(results) {
-						var options = "";
-						for (var i =0; i<results.length; i++) {
-							options += "<option value='" + results[i].id + "'>" + results[i].name + "</option>"
-						}
-						$("#expenseClass").html(options);
-					},
-					error: function() {
+			
+		// 查询支出类型
+ 		$("#expenseClassHead").click(function() {
+			$.ajax({
+				type : "POST",
+				url : "../expense/queryUserExpenseClass.do",
+				async : true,
+				dataType:"json",
+				success: function(results) {
+					var options = "";
+					for (var i =0; i<results.length; i++) {
+						/* options += "<option value='" + results[i].id + "'>" + results[i].name + "</option>" */
+						options += "<a href='#' class='list-group-item list-group-item-action expenseClassItem'>"+results[i].name+"</a>"
 					}
-				});
+					$("#expenseClass").html(options);
+				},
+				error: function() {
+				}
 			});
-			// 查询账户
-			$("#account").focus(function() {
-				$.ajax({
-					type : "POST",
-					url : "../account/queryUserAccount.do",
-					async : true,
-					dataType:"json",
-					success: function(results) {
-						var options = "";
-						for (var i =0; i<results.length; i++) {
-							options += "<option value='" + results[i].id + "'>" + results[i].name + "</option>"
-						}
-						$("#account").html(options);
-					},
-					error: function() {
+		});
+		$(".expenseClassItem").click(function(){
+			alert(this.innerHTML);
+		});
+			
+		var accountObj=[];
+		// 查询账户
+		$("#account").focus(function() {
+			$.ajax({
+				type : "POST",
+				url : "../account/queryUserAccount.do",
+				async : true,
+				dataType:"json",
+				success: function(results) {
+					var options = "";
+					for (var i =0; i<results.length; i++) {
+						options += "<option value='" + results[i].id + "'>" + results[i].name + "</option>"
+						accountObj.push(results[i]);
 					}
-				});
+					$("#account").html(options);
+				},
+				error: function() {
+				}
+			});
+		});
+		
+		//改变币种
+		$("#account").click(function() {
 			});
 			
 		});
@@ -92,7 +104,7 @@ pageEncoding="UTF-8"%>
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<form action="" class="">
+					<form action="../expense/addExpense.do" class="">
 						<div class="modal-body">
 							<div class="form-group">
 								<label for="">项目</label>
@@ -100,12 +112,18 @@ pageEncoding="UTF-8"%>
 							</div>
 							<div class="form-group">
 								<label for="expenseClass">支出类型</label><button type="button" class="btn btn-info btn-sm">编辑类型</button>
-								<select name="expenseClass" id="expenseClass" class="form-control">
-									<option value="0"></option>
-									<option value=""></option>
-									<option value=""></option>
-									<option value=""></option>
-								</select>
+								<div class="card">
+									<a href="#expenseClass" class="card-body" id="expenseClassHead" data-toggle="collapse" aria-expanded="false" aria-controls="expenseClass">
+										选择支出类型
+									</a>
+									<div class="list-group list-group-flush">
+										<div id="expenseClass" class="collapse" role="tabpanel" aria-labelledby="expenseClassHead" data-parent="#addExpense">
+											<a href="#" class="list-group-item list-group-item-action">1</a>
+											<a href="#" class="list-group-item list-group-item-action">2</a>
+											<a href="#" class="list-group-item list-group-item-action">3</a>
+										</div>
+									</div>
+								</div>
 							</div>
 							<div class="form-group">
 								<label for="account">账户</label><button type="button" class="btn btn-info btn-sm">编辑账户</button>
@@ -118,16 +136,18 @@ pageEncoding="UTF-8"%>
 							</div>
 							<div class="form-group">
 								<label for="">金额</label>
-								<input type="text" class="form-control">
+								<div class="input-group">
+									<span class="input-group-addon" id="currency">$</span>
+									<input type="text" class="form-control" placeholder="" aria-label="currency" aria-describedby="currency">
+								</div>
 							</div>
 							<div class="form-group">
 								<label for="">备注</label>
 								<textarea class="form-control"></textarea>
 							</div>
-							
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-primary">保存</button>
+							<button type="submit" class="btn btn-primary">保存</button>
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
 						</div>
 					</form>
@@ -166,9 +186,14 @@ pageEncoding="UTF-8"%>
 				<tr>
 					<td>每日小计</td>
 				</tr>
+				<tr>
+					<td>资产结余</td>
+				</tr>
 			</tbody>
 		</table>
 	</secetion>
-	<footer> @pearl finance </footer>
+	<footer>
+		@pearl finance
+	</footer>
 </body>
 </html>
