@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,11 +8,11 @@ pageEncoding="UTF-8"%>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/calendar.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	
-	<script src="../assets/jquery/jquery-3.2.1.min.js"></script>
-	<script src="../assets/popper/popper.min.js"></script>
+	<script src="../assets/framework/jquery/jquery-3.2.1.min.js"></script>
+	<script src="../assets/framework/popper/popper.min.js"></script>
 	
-	<link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css">
-	<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../assets/framework/bootstrap/css/bootstrap.css">
+	<script src="../assets/framework/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../assets/js/calendar.js"></script>
 	<script>
 		function my() {
